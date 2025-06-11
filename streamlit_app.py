@@ -2,6 +2,8 @@ import streamlit as st
 
 st.title("Movie Genre Detector 🎥🪄")
 
+st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
+
 # Centered image using markdown and HTML
 st.markdown(
     """
@@ -12,8 +14,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Text input
-user_input = st.text_area("Please enter your movie synopsis:")
+st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
+
+st.markdown(
+    "<h4 style='margin-top: 30px;'>Please enter your movie synopsis:</h4>",
+    unsafe_allow_html=True
+)
+
+# Text box
+user_input = st.text_area("", placeholder="Insert text here ...", height=150)
 
 # Submit button
 if st.button("Submit"):
