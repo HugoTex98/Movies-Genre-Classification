@@ -1,2 +1,5 @@
 streamlit
-openai
+pandas
+scikit-learn
+joblib
+pydantic
