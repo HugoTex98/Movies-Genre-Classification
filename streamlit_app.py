@@ -31,6 +31,11 @@ def preprocess_and_vectorize(text: UserInput):
 # --- Streamlit UI ---
 st.title("Movie Genre Detector 🎥🪄")
 
+st.markdown(
+    "<p style='margin-top: 25px;'>This application receives a movie synopsis, through text or a .txt file, and retrives its genre. Currently it only supports movie synopsis from cult, dramatic and paranormal genres.</p>",
+    unsafe_allow_html=True
+)
+
 st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
 # Centered image using markdown and HTML
@@ -46,7 +51,7 @@ st.markdown(
 st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
 st.markdown(
-    "<h4 style='margin-top: 30px;'>Please enter your movie synopsis:</h4>",
+    "<h4 style='margin-top: 25px;'>Please enter your movie synopsis:</h4>",
     unsafe_allow_html=True
 )
 
