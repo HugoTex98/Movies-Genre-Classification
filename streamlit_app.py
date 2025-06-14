@@ -32,7 +32,7 @@ def preprocess_and_vectorize(text: UserInput):
 st.title("Movie Genre Detector 🎥🪄")
 
 st.markdown(
-    "<p style='margin-top: 25px;'>This application receives a movie synopsis, through text or a .txt file, and retrives its genre. Currently it only supports movie synopsis from cult, dramatic and paranormal genres.</p>",
+    "<p style='margin-top: 20px;'>This application receives a movie synopsis, through text or a .txt file, and retrives its genre. Currently it only supports movie synopsis from cult, dramatic and paranormal genres.</p>",
     unsafe_allow_html=True
 )
 
@@ -51,7 +51,7 @@ st.markdown(
 st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
 
 st.markdown(
-    "<h4 style='margin-top: 25px;'>Please enter your movie synopsis:</h4>",
+    "<h5 style='margin-top: 20px;'>Please enter your movie synopsis:</h5>",
     unsafe_allow_html=True
 )
 
