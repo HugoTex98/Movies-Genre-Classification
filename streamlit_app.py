@@ -1,5 +1,34 @@
 import streamlit as st
+import spacy
+import joblib
+import numpy as np
+from pydantic import BaseModel
 
+# --- Load SpaCy model and trained model ---
+class UserInput(BaseModel):
+    text: str
+
+def load_models():
+    nlp = spacy.load("en_core_web_md")
+    model = joblib.load("model.pkl")
+    return nlp, model
+
+nlp, model = load_models()
+
+def preprocess_and_vectorize(text: UserInput):
+    """
+    Input: synopsis text (string)
+    Output: embeddings of the text
+    """
+    doc_nlp = nlp(text)
+    filtered_tokens = [token.text for token in doc_nlp if not token.is_stop]
+    if filtered_tokens:
+        vector = nlp(" ".join(filtered_tokens)).vector
+    else:
+        vector = np.zeros(nlp.vocab.vectors_length)
+    return vector.reshape(1, -1)  # Ensure 2D shape for sklearn
+
+# --- Streamlit UI ---
 st.title("Movie Genre Detector 🎥🪄")
 
 st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
@@ -51,6 +80,11 @@ if st.button("Submit"):
 
     # Process if there is valid text
     if processed_text:
-        # Example: display the processed text
+        # Prepare text for the model to predict
+        input_vector = preprocess_and_vectorize(processed_text)
+
+        prediction = model.predict(input_vector)
+
+        # Display result
         st.markdown("### Movie Synopsis Genre is:")
-        st.write(processed_text)
+        st.write(prediction[0])
